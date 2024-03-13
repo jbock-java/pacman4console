@@ -13,6 +13,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include <sys/timeb.h>
 #include "pacman.h"
 
@@ -107,7 +108,7 @@ void CheckCollision() {
 				GhostsInARow *= 2;
 				wrefresh(win);
 
-				usleep(1000000);
+				sleep(1);
 
 				Loc[a][0] = StartingPoints[a][0]; Loc[a][1] = StartingPoints[a][1];
 			}
@@ -120,7 +121,7 @@ void CheckCollision() {
 				wrefresh(win);
 
 				Lives--;
-				usleep(1000000);
+				sleep(1);
 
 				if(Lives == -1) ExitProgram(END_MSG);
 
@@ -137,7 +138,7 @@ void CheckCollision() {
 
 				DrawWindow();
 
-				usleep(1000000);
+				sleep(1);
 			}
 		}
 	}
@@ -322,7 +323,7 @@ void IntroScreen() {
 	wattron(win, COLOR_PAIR(Pacman));
 	mvwprintw(win, 8, 12, "PACMAN");
 	wrefresh(win);
-	usleep(1000000);
+	sleep(1);
 
 	//Ghosts Chase Pacman
 	for(a = 0; a < 23; a++) {
