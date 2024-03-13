@@ -1,19 +1,19 @@
-prefix=/usr/local
+prefix=${HOME}/sw/pacman
 bindir=$(prefix)/bin
 datarootdir=$(prefix)/share
 
 all:
-	gcc pacman.c     -o pacman     -DDATAROOTDIR=\"$(datarootdir)\" $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -lncurses
+	gcc pacman.c -o pacman -DDATAROOTDIR=\"$(datarootdir)\" $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -lncurses
+
+pacmanedit:
 	gcc pacmanedit.c -o pacmanedit -DDATAROOTDIR=\"$(datarootdir)\" $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -lncurses
 
-install:	all
+install: all pacmanedit
 	mkdir -p $(DESTDIR)$(bindir)
 	cp pacman $(DESTDIR)$(bindir)
 	cp pacmanedit $(DESTDIR)$(bindir)
 	mkdir -p $(DESTDIR)$(datarootdir)/pacman
 	cp -fR Levels/ $(DESTDIR)$(datarootdir)/pacman/
-	-chown root:games $(DESTDIR)$(bindir)/pacman
-	-chown root:games $(DESTDIR)$(datarootdir)/pacman -R
 	chmod 750 $(DESTDIR)$(bindir)/pacman
 	chmod 750 $(DESTDIR)$(bindir)/pacmanedit
 	chmod 750 $(DESTDIR)$(datarootdir)/pacman/ -R
