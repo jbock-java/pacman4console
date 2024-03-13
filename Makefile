@@ -3,7 +3,7 @@ bindir=$(prefix)/bin
 datarootdir=$(prefix)/share
 
 all:
-	gcc pacman.c -o pacman -DDATAROOTDIR=\"$(datarootdir)\" $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -lncurses
+	gcc -g pacman.c -o pacman -DDATAROOTDIR=\"$(datarootdir)\" $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -lncurses
 
 pacmanedit:
 	gcc pacmanedit.c -o pacmanedit -DDATAROOTDIR=\"$(datarootdir)\" $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -lncurses

@@ -8,4 +8,4 @@ int FreeLife = 1000;			//Starting points for free life
 int Points = 0;				//Initial points
 int Lives = 5;				//Number of lives you start with
 int HowSlow = 3;			//How slow vulnerable ghost move
-int SpeedOfGame = 275;			//How much of a delay is in the game
+int SpeedOfGame = 275000000;		//How much of a delay is in the game

@@ -12,6 +12,7 @@
 #include <curses.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include <sys/timeb.h>
 #include "pacman.h"
 
@@ -161,14 +162,14 @@ void CreateWindows(int y, int x, int y0, int x0) {
 
 void Delay() {
 
-	struct timeb t_start, t_current;
-	ftime(&t_start);
+	struct timespec t_start, t_current;
+	clock_gettime(CLOCK_REALTIME, &t_start);
 
 	//Slow down the game a little bit
 	do {
 		GetInput();
-		ftime(&t_current);
-	} while (abs(t_start.millitm - t_current.millitm) < SpeedOfGame);
+		clock_gettime(CLOCK_REALTIME, &t_current);
+	} while (abs(t_current.tv_nsec - t_start.tv_nsec) < SpeedOfGame);
 }
 
 void DrawWindow() {
