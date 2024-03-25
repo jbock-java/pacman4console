@@ -170,7 +170,7 @@ void Delay() {
 	do {
 		GetInput();
 		clock_gettime(CLOCK_REALTIME, &t_current);
-	} while (abs(t_current.tv_nsec - t_start.tv_nsec) < SpeedOfGame);
+	} while (labs(t_current.tv_nsec - t_start.tv_nsec) < SpeedOfGame);
 }
 
 void DrawWindow() {

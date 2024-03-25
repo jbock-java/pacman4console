@@ -13,10 +13,10 @@ install: all pacmanedit
 	cp pacman $(DESTDIR)$(bindir)
 	cp pacmanedit $(DESTDIR)$(bindir)
 	mkdir -p $(DESTDIR)$(datarootdir)/pacman
-	cp -fR Levels/ $(DESTDIR)$(datarootdir)/pacman/
+	cp -fR Levels $(DESTDIR)$(datarootdir)/pacman/Levels
 	chmod 750 $(DESTDIR)$(bindir)/pacman
 	chmod 750 $(DESTDIR)$(bindir)/pacmanedit
-	chmod 750 $(DESTDIR)$(datarootdir)/pacman/ -R
+	chmod -R 750 $(DESTDIR)$(datarootdir)/pacman
 
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/pacman
